@@ -5,6 +5,12 @@ import * as path from 'path'
 const ext = process.platform === 'win32' ? '.exe' : ''
 
 describe('options', () => {
+  it('should work parent', () => {
+    const options = normalizeOptions({
+      output: './some-output'
+    })
+    expect(options.output).to.equal(path.resolve(`./some-output${ext}`))
+  })
   describe('cwd', () => {
     it('should use process.cwd() if nothing is provided', () => {
       const options = normalizeOptions()
