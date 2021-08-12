@@ -12,37 +12,39 @@ describe('options', () => {
     expect(options.output).to.equal(path.resolve(`./some-output${ext}`))
   })
   describe('cwd', () => {
-    it('should use process.cwd() if nothing is provided', () => {
-      const options = normalizeOptions()
-      expect(options.cwd).to.equal(process.cwd())
-    })
-    it('should use the main module in a package directory (if not in a TTY)', () => {
-      const options = normalizeOptions()
-      if (!process.stdin.isTTY) {
-        expect(options.input).to.equal('[stdin]')
-      } else {
-        expect(options.input).to.equal(path.resolve('./index.js'))
-      }
-    })
-    it('should resolve relative paths for input', () => {
-      const options = normalizeOptions({ input: 'test/fixture/entry.js' })
-      expect(options.input).to.equal(path.resolve('./test/fixture/entry.js'))
-    })
-    it('should accept a module entry as input', () => {
-      const options = normalizeOptions({ input: 'test/fixture' })
-      expect(options.input).to.equal(path.resolve('./test/fixture/entry.js'))
-    })
-    it('should resolve pathed options against cwd', () => {
-      const cwd = path.join(process.cwd(), 'test/fixture')
-      const options = normalizeOptions({
-        cwd,
-        input: 'entry',
-        output: 'abc',
-        temp: './d'
+    describe('cwd child', () => {
+      it('should use process.cwd() if nothing is provided', () => {
+        const options = normalizeOptions()
+        expect(options.cwd).to.equal(process.cwd())
       })
-      expect(options.temp).to.equal(path.resolve(cwd, './d'))
-      expect(options.input).to.equal(path.resolve(cwd, 'entry.js'))
-      expect(options.output).to.equal(path.resolve(cwd, `abc${ext}`))
+      it('should use the main module in a package directory (if not in a TTY)', () => {
+        const options = normalizeOptions()
+        if (!process.stdin.isTTY) {
+          expect(options.input).to.equal('[stdin]')
+        } else {
+          expect(options.input).to.equal(path.resolve('./index.js'))
+        }
+      })
+      it('should resolve relative paths for input', () => {
+        const options = normalizeOptions({ input: 'test/fixture/entry.js' })
+        expect(options.input).to.equal(path.resolve('./test/fixture/entry.js'))
+      })
+      it('should accept a module entry as input', () => {
+        const options = normalizeOptions({ input: 'test/fixture' })
+        expect(options.input).to.equal(path.resolve('./test/fixture/entry.js'))
+      })
+      it('should resolve pathed options against cwd', () => {
+        const cwd = path.join(process.cwd(), 'test/fixture')
+        const options = normalizeOptions({
+          cwd,
+          input: 'entry',
+          output: 'abc',
+          temp: './d'
+        })
+        expect(options.temp).to.equal(path.resolve(cwd, './d'))
+        expect(options.input).to.equal(path.resolve(cwd, 'entry.js'))
+        expect(options.output).to.equal(path.resolve(cwd, `abc${ext}`))
+      })
     })
   })
 
