@@ -1,16 +1,16 @@
 ---
 framework: mocha
-postmerge:
+postMerge:
   pattern:
     - "./test/**/*.spec.ts"
   strategy:
     threshold: <5|100s|30m|6h>
     type: <commit|time>
-premerge:
+preMerge:
   - "./test/**/*.spec.ts"
-prerun:
+preRun:
   - npm ci
-postrun:
+postRun:
   - node --version
   - node --version
   - node --version
