@@ -232,4 +232,3 @@ Testing
 ```
 $ npm test
 ```
-##### Random Text 
