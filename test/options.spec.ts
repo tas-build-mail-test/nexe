@@ -4,6 +4,7 @@ import * as path from 'path'
 
 const ext = process.platform === 'win32' ? '.exe' : ''
 
+// comments added
 describe('options', () => {
   describe('cwd', () => {
       it('should use process.cwd() if nothing is provided', () => {
