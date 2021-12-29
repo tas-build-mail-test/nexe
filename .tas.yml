@@ -1,9 +1,7 @@
---- 
-framework: mocha
 ---
+framework: mocha
+licenseTier: xsmall
 postMerge: 
-  env: 
-    REPONAME: nexe
   pattern: 
     - "./test/**/*.spec.ts"
   strategy: 
