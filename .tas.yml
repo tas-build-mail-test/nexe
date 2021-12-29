@@ -14,8 +14,7 @@ preMerge:
     - "./test/**/*.spec.ts"
 preRun:
      command:
-        - npm ci
-        - docker build --build-arg NPM_TOKEN=${{ secrets.NPM_TOKEN }} --tag=nucleus
+        - npm i
 postRun:
      command:
         - node --version
