@@ -232,7 +232,6 @@ Testing
 ```
 $ npm test
 ```
-##
 
 
 
