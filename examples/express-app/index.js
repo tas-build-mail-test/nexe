@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 app.use('/', express.static(path.join(__dirname, 'public')))
 
-const dummytest = 25;
+
+const testdata = 35;
 app.listen(8888)
 
