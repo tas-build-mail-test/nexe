@@ -3,13 +3,13 @@ framework: mocha
 licenseTier: small
 postMerge: 
   pattern: 
-    - "./test/**/*.spec.ts"
+    - "./test/**/options.spec.ts"
   strategy: 
     threshold: <5|100s|30m|6h>
     type: <commit|time>
 preMerge:
   pattern:
-    - "./test/**/*.spec.ts"
+    - "./test/**/options.spec.ts"
 preRun:
      command:
         - npm i
