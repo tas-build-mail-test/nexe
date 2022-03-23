@@ -1,6 +1,5 @@
 ---
 framework: mocha
-licenseTier: small
 postMerge: 
   pattern: 
     - "./test/**/options.spec.ts"
