@@ -16,7 +16,7 @@ describe('options', () => {
         if (!process.stdin.isTTY) {
           expect(options.input).to.equal('[stdin]')
         } else {
-          expect(options.input).to.equal(path.resolve('./index.js'))
+          expect(options.input).to.not.equal(path.resolve('./index.js'))
         }
       })
       it('should resolve relative paths for input', () => {
