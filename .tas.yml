@@ -11,7 +11,7 @@ preMerge:
     - "./test/**/options.spec.ts"
 preRun:
      command:
-        - npm i
+        - npm ci
 postRun:
      command:
         - node --version
